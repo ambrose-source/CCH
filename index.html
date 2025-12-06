@@ -396,13 +396,18 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. 從 HTML 中提取所有食物名稱 (name-tw)
+        // 1. 從 HTML 中提取食物的中文和英文名稱，並儲存為物件陣列
         const foodCards = document.querySelectorAll('.food-card');
-        const foodNames = [];
+        const foodItems = []; // 儲存 { tw: '中文名', en: 'English Name' }
         foodCards.forEach(card => {
-            const nameElement = card.querySelector('.name-tw');
-            if (nameElement) {
-                foodNames.push(nameElement.textContent.trim());
+            const nameTwElement = card.querySelector('.name-tw');
+            const nameEnElement = card.querySelector('.name-en');
+            
+            if (nameTwElement && nameEnElement) {
+                foodItems.push({
+                    tw: nameTwElement.textContent.trim(),
+                    en: nameEnElement.textContent.trim()
+                });
             }
         });
 
@@ -410,12 +415,12 @@
         const spinButton = document.getElementById('spin-button');
 
         function selectRandomFood() {
-            if (foodNames.length === 0) {
-                resultDisplay.textContent = "美食清單是空的！";
+            if (foodItems.length === 0) {
+                resultDisplay.innerHTML = "美食清單是空的！";
                 return;
             }
 
-            // 禁用按鈕，防止重複點擊
+            // 禁用按鈕
             spinButton.disabled = true;
             resultDisplay.style.backgroundColor = '#ecf0f1';
             resultDisplay.style.color = '#2c3e50';
@@ -426,19 +431,24 @@
             
             // 2. 模擬轉盤旋轉效果
             interval = setInterval(() => {
-                const randomIndex = Math.floor(Math.random() * foodNames.length);
-                resultDisplay.textContent = foodNames[randomIndex];
+                const randomIndex = Math.floor(Math.random() * foodItems.length);
+                const rotatingFood = foodItems[randomIndex];
+                
+                // 在旋轉時只顯示中文
+                resultDisplay.innerHTML = rotatingFood.tw; 
                 rotationCount++;
 
                 if (rotationCount > maxRotations) {
                     clearInterval(interval);
                     
                     // 3. 確定最終結果
-                    const finalIndex = Math.floor(Math.random() * foodNames.length);
-                    const finalFood = foodNames[finalIndex];
+                    const finalIndex = Math.floor(Math.random() * foodItems.length);
+                    const finalFood = foodItems[finalIndex];
                     
-                    // 顯示最終結果並改變樣式
-                    resultDisplay.textContent = finalFood + "！就是它了！";
+                    // 顯示最終結果 (中英對照)
+                    resultDisplay.innerHTML = 
+                        `**${finalFood.tw}** <br> (${finalFood.en})！就是它了！`;
+                        
                     resultDisplay.style.backgroundColor = '#f39c12'; 
                     resultDisplay.style.color = 'white';
                     spinButton.disabled = false;
@@ -450,10 +460,11 @@
         spinButton.addEventListener('click', selectRandomFood);
         
         // 初始化顯示可選美食數量
-        if (foodNames.length > 0) {
-            document.getElementById('selection-tip').textContent = `美食清單中有 ${foodNames.length} 種選擇`;
+        if (foodItems.length > 0) {
+            document.getElementById('selection-tip').textContent = `美食清單中有 ${foodItems.length} 種選擇`;
         }
     });
 </script>
+
 
 
