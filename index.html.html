@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彰化美食地圖 | Changhua Food Guide</title>
+    <style>
+        :root {
+            --primary-color: #d35400; /* 溫暖的食物橘色 */
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        /* 網格佈局 */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* 卡片設計 */
+        .food-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 圖片容器 */
+        .img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 確保圖片填滿且不變形 */
+            transition: transform 0.5s ease;
+        }
+
+        .food-card:hover img {
+            transform: scale(1.1); /* 滑鼠移過去圖片微放大 */
+        }
+
+        .info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .name-tw {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .name-en {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* 標籤樣式 */
+        .badge {
+            display: inline-block;
+            background: #eee;
+            color: #555;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>彰化美食地圖</h1>
+    <p>Changhua Must-Eat Food Guide</p>
+</header>
+
+<div class="container">
+    <div class="food-grid">
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="rice.jpg" alt="爌肉飯">
+            </div>
+            <div class="info">
+                <div class="name-tw">爌肉飯</div>
+                <div class="name-en">Braised Pork Rice</div>
+                <span class="badge">經典主食</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="meatball.jpg"" alt="肉圓">
+            </div>
+            <div class="info">
+                <div class="name-tw">肉圓</div>
+                <div class="name-en">Bawan (Taiwanese Meatball)</div>
+                <span class="badge">在地特色</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="friedstickyrice.jpg" alt="糯米炸">
+            </div>
+            <div class="info">
+                <div class="name-tw">糯米炸</div>
+                <div class="name-en">Fried Sticky Rice Ball</div>
+                <span class="badge">古早味點心</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="papaya milk.jpg" alt="木瓜牛奶">
+            </div>
+            <div class="info">
+                <div class="name-tw">木瓜牛奶</div>
+                <div class="name-en">Papaya Milk</div>
+                <span class="badge">人氣飲品</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="green onion.jpg" alt="蔥抓餅">
+            </div>
+            <div class="info">
+                <div class="name-tw">蔥抓餅</div>
+                <div class="name-en">Scallion Pancake</div>
+                <span class="badge">街頭小吃</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="dount.jpg" alt="傳統甜甜圈">
+            </div>
+            <div class="info">
+                <div class="name-tw">傳統甜甜圈</div>
+                <div class="name-en">Traditional Doughnut</div>
+                <span class="badge">甜點</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=600&q=80" alt="東山鴨頭">
+            </div>
+            <div class="info">
+                <div class="name-tw">東山鴨頭</div>
+                <div class="name-en">Dongshan Duck Head</div>
+                <span class="badge">宵夜首選</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="yolk cake.jpg" alt="蛋黃酥">
+            </div>
+            <div class="info">
+                <div class="name-tw">蛋黃酥</div>
+                <div class="name-en">Yolk Pastry</div>
+                <span class="badge">伴手禮</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="tofu pudding.jpg" alt="豆花">
+            </div>
+            <div class="info">
+                <div class="name-tw">豆花</div>
+                <div class="name-en">Tofu Pudding</div>
+                <span class="badge">甜湯</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="grass jelly.jpg" alt="燒仙草">
+            </div>
+            <div class="info">
+                <div class="name-tw">燒仙草</div>
+                <div class="name-en">Hot Grass Jelly</div>
+                <span class="badge">冬季限定</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="oyster.jpg" alt="炸蚵嗲">
+            </div>
+            <div class="info">
+                <div class="name-tw">炸蚵嗲</div>
+                <div class="name-en">Deep-fried Oyster Cake</div>
+                <span class="badge">炸物</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="machua.jpg" alt="麻糬">
+            </div>
+            <div class="info">
+                <div class="name-tw">麻糬</div>
+                <div class="name-en">Mochi</div>
+                <span class="badge">Q彈口感</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="raddish.jpg" alt="蘿蔔糕">
+            </div>
+            <div class="info">
+                <div class="name-tw">蘿蔔糕</div>
+                <div class="name-en">Radish Cake</div>
+                <span class="badge">早餐/點心</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="水煎包.jpg" alt="水煎包">
+            </div>
+            <div class="info">
+                <div class="name-tw">水煎包</div>
+                <div class="name-en">Pan-fried Bun</div>
+                <span class="badge">麵食點心</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="eggcake.jpg" alt="雞蛋糕">
+            </div>
+            <div class="info">
+                <div class="name-tw">雞蛋糕</div>
+                <div class="name-en">Egg Sponge Cake</div>
+                <span class="badge">童年回憶</span>
+            </div>
+        </article>
+
+        <article class="food-card">
+            <div class="img-container">
+                <img src="beef.jpg" alt="牛肉麵">
+            </div>
+            <div class="info">
+                <div class="name-tw">牛肉麵</div>
+                <div class="name-en">Beef Noodle Soup</div>
+                <span class="badge">湯麵</span>
+            </div>
+        </article>
+
+         <article class="food-card">
+            <div class="img-container">
+                <img src="blood.jpg" alt="米血">
+            </div>
+            <div class="info">
+                <div class="name-tw">米血</div>
+                <div class="name-en">Pig's Blood Cake</div>
+                <span class="badge">獨特口感</span>
+            </div>
+        </article>
+
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Changhua Food Map. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
