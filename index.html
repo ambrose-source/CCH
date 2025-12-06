@@ -396,17 +396,19 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. 從 HTML 中提取食物的中文和英文名稱，並儲存為物件陣列
+        // 1. 從 HTML 中提取食物的中文、英文名稱和圖片 URL
         const foodCards = document.querySelectorAll('.food-card');
-        const foodItems = []; // 儲存 { tw: '中文名', en: 'English Name' }
+        const foodItems = []; // 儲存 { tw: '中文', en: 'English', src: '圖片網址' }
         foodCards.forEach(card => {
             const nameTwElement = card.querySelector('.name-tw');
             const nameEnElement = card.querySelector('.name-en');
+            const imgElement = card.querySelector('.img-container img'); // 抓取圖片標籤
             
-            if (nameTwElement && nameEnElement) {
+            if (nameTwElement && nameEnElement && imgElement) {
                 foodItems.push({
                     tw: nameTwElement.textContent.trim(),
-                    en: nameEnElement.textContent.trim()
+                    en: nameEnElement.textContent.trim(),
+                    src: imgElement.getAttribute('src') // 提取圖片的 src 屬性
                 });
             }
         });
@@ -424,6 +426,7 @@
             spinButton.disabled = true;
             resultDisplay.style.backgroundColor = '#ecf0f1';
             resultDisplay.style.color = '#2c3e50';
+            resultDisplay.innerHTML = 'PRESS'; // 重設顯示內容
             
             let rotationCount = 0;
             const maxRotations = 25; // 模擬轉動 2.5 秒
@@ -434,7 +437,7 @@
                 const randomIndex = Math.floor(Math.random() * foodItems.length);
                 const rotatingFood = foodItems[randomIndex];
                 
-                // 在旋轉時只顯示中文
+                // 旋轉時顯示中文，不顯示圖片
                 resultDisplay.innerHTML = rotatingFood.tw; 
                 rotationCount++;
 
@@ -445,9 +448,10 @@
                     const finalIndex = Math.floor(Math.random() * foodItems.length);
                     const finalFood = foodItems[finalIndex];
                     
-                    // 顯示最終結果 (中英對照)
+                    // 顯示最終結果 (圖片、中文、英文)
                     resultDisplay.innerHTML = 
-                        `**${finalFood.tw}** <br> (${finalFood.en})！就是它了！`;
+                        `<img src="${finalFood.src}" alt="${finalFood.tw}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-right: 15px; vertical-align: middle;">` +
+                        `<span style="font-size: 1.5rem; font-weight: bold;">${finalFood.tw}</span> <br> <span style="font-size: 1rem;">(${finalFood.en})！就是它了！</span>`;
                         
                     resultDisplay.style.backgroundColor = '#f39c12'; 
                     resultDisplay.style.color = 'white';
@@ -465,6 +469,7 @@
         }
     });
 </script>
+
 
 
 
