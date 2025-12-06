@@ -426,5 +426,34 @@
             
             // 2. 模擬轉盤旋轉效果
             interval = setInterval(() => {
-                const randomIndex = Math.floor(Math.
+                const randomIndex = Math.floor(Math.random() * foodNames.length);
+                resultDisplay.textContent = foodNames[randomIndex];
+                rotationCount++;
+
+                if (rotationCount > maxRotations) {
+                    clearInterval(interval);
+                    
+                    // 3. 確定最終結果
+                    const finalIndex = Math.floor(Math.random() * foodNames.length);
+                    const finalFood = foodNames[finalIndex];
+                    
+                    // 顯示最終結果並改變樣式
+                    resultDisplay.textContent = finalFood + "！就是它了！";
+                    resultDisplay.style.backgroundColor = '#f39c12'; 
+                    resultDisplay.style.color = 'white';
+                    spinButton.disabled = false;
+                }
+            }, 100);
+        }
+
+        // 監聽按鈕點擊事件
+        spinButton.addEventListener('click', selectRandomFood);
+        
+        // 初始化顯示可選美食數量
+        if (foodNames.length > 0) {
+            document.getElementById('selection-tip').textContent = `美食清單中有 ${foodNames.length} 種選擇`;
+        }
+    });
+</script>
+
 
