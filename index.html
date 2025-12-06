@@ -47,6 +47,62 @@
             padding: 0 20px 40px;
         }
 
+        /* 新增：隨機選擇器樣式 */
+        #random-picker {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border: 3px solid var(--primary-color);
+        }
+
+        #random-picker h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        #result-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 20px 0;
+            padding: 15px;
+            min-height: 40px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        #spin-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            box-shadow: 0 4px #a04000; /* Darker shade for 3D effect */
+        }
+
+        #spin-button:hover {
+            background-color: #e67e22;
+        }
+
+        #spin-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px #a04000;
+        }
+
+        #selection-tip {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 15px;
+        }
         /* 網格佈局 */
         .food-grid {
             display: grid;
@@ -136,11 +192,17 @@
 </header>
 
 <div class="container">
+    <div id="random-picker">
+        <h2>今天吃什麼？ (隨機美食轉盤)</h2>
+        <div id="result-display">點擊下方按鈕開始選擇</div>
+        <button id="spin-button">隨機挑選</button>
+        <p id="selection-tip">轉盤結果會顯示在上方</p>
+    </div>
     <div class="food-grid">
 
         <article class="food-card">
             <div class="img-container">
-                <img src="rice.jpg" alt="爌肉飯">
+                <img src="https://images.unsplash.com/photo-1628173516327-0b15e451475c?q=80&w=280&auto=format&fit=crop" alt="爌肉飯">
             </div>
             <div class="info">
                 <div class="name-tw">爌肉飯</div>
@@ -151,7 +213,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="meatball.jpg"" alt="肉圓">
+                <img src="https://images.unsplash.com/photo-1622329790695-17e94f877f24?q=80&w=280&auto=format&fit=crop" alt="肉圓">
             </div>
             <div class="info">
                 <div class="name-tw">肉圓</div>
@@ -162,7 +224,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="friedstickyrice.jpg" alt="糯米炸">
+                <img src="https://images.unsplash.com/photo-1563853173775-9b2e7d37e6f3?q=80&w=280&auto=format&fit=crop" alt="糯米炸">
             </div>
             <div class="info">
                 <div class="name-tw">糯米炸</div>
@@ -173,7 +235,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="papaya milk.jpg" alt="木瓜牛奶">
+                <img src="https://images.unsplash.com/photo-1628582963625-7b79d2a1b919?q=80&w=280&auto=format&fit=crop" alt="木瓜牛奶">
             </div>
             <div class="info">
                 <div class="name-tw">木瓜牛奶</div>
@@ -184,7 +246,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="green onion.jpg" alt="蔥抓餅">
+                <img src="https://images.unsplash.com/photo-1606709322319-354784a1e941?q=80&w=280&auto=format&fit=crop" alt="蔥抓餅">
             </div>
             <div class="info">
                 <div class="name-tw">蔥抓餅</div>
@@ -195,7 +257,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="dount.jpg" alt="傳統甜甜圈">
+                <img src="https://images.unsplash.com/photo-1588698293998-09559599525c?q=80&w=280&auto=format&fit=crop" alt="傳統甜甜圈">
             </div>
             <div class="info">
                 <div class="name-tw">傳統甜甜圈</div>
@@ -206,7 +268,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="duckdead.jpg" alt="東山鴨頭">
+                <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=600&q=80" alt="東山鴨頭">
             </div>
             <div class="info">
                 <div class="name-tw">東山鴨頭</div>
@@ -217,7 +279,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="yolk cake.jpg" alt="蛋黃酥">
+                <img src="https://images.unsplash.com/photo-1579207036666-4e58a2f85e49?q=80&w=280&auto=format&fit=crop" alt="蛋黃酥">
             </div>
             <div class="info">
                 <div class="name-tw">蛋黃酥</div>
@@ -228,7 +290,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="tofu pudding.jpg" alt="豆花">
+                <img src="https://images.unsplash.com/photo-1587829746377-628f21e51b69?q=80&w=280&auto=format&fit=crop" alt="豆花">
             </div>
             <div class="info">
                 <div class="name-tw">豆花</div>
@@ -239,7 +301,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="grass jelly.jpg" alt="燒仙草">
+                <img src="https://images.unsplash.com/photo-1593922650085-f5b9d31d798b?q=80&w=280&auto=format&fit=crop" alt="燒仙草">
             </div>
             <div class="info">
                 <div class="name-tw">燒仙草</div>
@@ -250,7 +312,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="oyster.jpg" alt="炸蚵嗲">
+                <img src="https://images.unsplash.com/photo-1588825707755-668b5a03e1e4?q=80&w=280&auto=format&fit=crop" alt="炸蚵嗲">
             </div>
             <div class="info">
                 <div class="name-tw">炸蚵嗲</div>
@@ -261,7 +323,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="machua.jpg" alt="麻糬">
+                <img src="https://images.unsplash.com/photo-1620023023249-14a515f4007f?q=80&w=280&auto=format&fit=crop" alt="麻糬">
             </div>
             <div class="info">
                 <div class="name-tw">麻糬</div>
@@ -272,7 +334,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="raddish.jpg" alt="蘿蔔糕">
+                <img src="https://images.unsplash.com/photo-1594247514330-8903c746e492?q=80&w=280&auto=format&fit=crop" alt="蘿蔔糕">
             </div>
             <div class="info">
                 <div class="name-tw">蘿蔔糕</div>
@@ -283,7 +345,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="水煎包.jpg" alt="水煎包">
+                <img src="https://images.unsplash.com/photo-1558980829-f54f76274472?q=80&w=280&auto=format&fit=crop" alt="水煎包">
             </div>
             <div class="info">
                 <div class="name-tw">水煎包</div>
@@ -294,7 +356,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="eggcake.jpg" alt="雞蛋糕">
+                <img src="https://images.unsplash.com/photo-1559858341-3844f2e032e5?q=80&w=280&auto=format&fit=crop" alt="雞蛋糕">
             </div>
             <div class="info">
                 <div class="name-tw">雞蛋糕</div>
@@ -305,7 +367,7 @@
 
         <article class="food-card">
             <div class="img-container">
-                <img src="beef.jpg" alt="牛肉麵">
+                <img src="https://images.unsplash.com/photo-1559666018-8f5b8c66e273?q=80&w=280&auto=format&fit=crop" alt="牛肉麵">
             </div>
             <div class="info">
                 <div class="name-tw">牛肉麵</div>
@@ -316,7 +378,7 @@
 
          <article class="food-card">
             <div class="img-container">
-                <img src="blood.jpg" alt="米血">
+                <img src="https://images.unsplash.com/photo-1582234372721-e070e199d7a2?q=80&w=280&auto=format&fit=crop" alt="米血">
             </div>
             <div class="info">
                 <div class="name-tw">米血</div>
@@ -332,8 +394,36 @@
     <p>&copy; 2025 Changhua Food Map. All rights reserved.</p>
 </footer>
 
-</body>
-</html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. 從 HTML 中提取所有食物名稱 (name-tw)
+        const foodCards = document.querySelectorAll('.food-card');
+        const foodNames = [];
+        foodCards.forEach(card => {
+            const nameElement = card.querySelector('.name-tw');
+            if (nameElement) {
+                foodNames.push(nameElement.textContent.trim());
+            }
+        });
 
+        const resultDisplay = document.getElementById('result-display');
+        const spinButton = document.getElementById('spin-button');
 
+        function selectRandomFood() {
+            if (foodNames.length === 0) {
+                resultDisplay.textContent = "美食清單是空的！";
+                return;
+            }
 
+            // 禁用按鈕，防止重複點擊
+            spinButton.disabled = true;
+            resultDisplay.style.backgroundColor = '#ecf0f1';
+            resultDisplay.style.color = '#2c3e50';
+            
+            let rotationCount = 0;
+            const maxRotations = 25; // 模擬轉動 2.5 秒
+            let interval;
+            
+            // 2. 模擬轉盤旋轉效果
+            interval = setInterval(() => {
+                const randomIndex = Math.floor(Math.
